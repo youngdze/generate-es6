@@ -36,7 +36,7 @@ module.exports = yeoman.Base.extend({
       default: 'ISC'
     }];
 
-    this.prompt(prompts, function (props) {
+    this.prompt(prompts, function(props) {
       this.props = props;
 
       done();
@@ -87,8 +87,8 @@ module.exports = yeoman.Base.extend({
       this.destinationPath('bs-config.json')
     );
     this.fs.copy(
-      this.templatePath('src/tpl/index.html'),
-      this.destinationPath('src/tpl/index.html')
+      this.templatePath('src/tpl/index.ejs'),
+      this.destinationPath('src/tpl/index.ejs')
     );
   },
 

@@ -16,7 +16,7 @@ export default merge(baseConf, {
     new UglifyJsPlugin({warnings: false}),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/tpl/index.html',
+      template: './src/tpl/index.ejs',
       minify: {collapseWhitespace: true, removeComments: true}
     })
   ]
