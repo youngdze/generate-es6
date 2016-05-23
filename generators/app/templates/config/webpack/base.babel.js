@@ -26,9 +26,6 @@ export default {
         plugins: ['transform-runtime']
       }
     }, {
-      test: /\.s?css$/,
-      loader: ExtractTextPlugin.extract('style', `css!sass?${['outputStyle=expanded'].join('&')}`)
-    }, {
       test: /\.(ttf|eot|svg|woff(2)?)(.*)?$/,
       loader: 'file?name=fonts/[hash].[ext]'
     }, {
