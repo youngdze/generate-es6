@@ -5,6 +5,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import baseConf from './base.babel';
 
 export default merge(baseConf, {
+  output: {
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[chunkhash].chunk.js'
+  },
   module: {
     loaders: [{
       test: /\.s?css$/,

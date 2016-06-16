@@ -1,5 +1,8 @@
 import path from 'path';
 import CommonsChunkPlugin from 'webpack/lib/optimize/CommonsChunkPlugin';
+import OccurrenceOrderPlugin from 'webpack/lib/optimize/OccurrenceOrderPlugin';
+import DedupePlugin from 'webpack/lib/optimize/DedupePlugin';
+import LimitChunkCountPlugin from 'webpack/lib/optimize/LimitChunkCountPlugin';
 import ProvidePlugin from 'webpack/lib/ProvidePlugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -37,7 +40,14 @@ export default {
     new ProvidePlugin({
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }),
-    new CommonsChunkPlugin('commons', 'js/commons.js'),
+    new CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'js/commons.js',
+      minChunks: 3
+    }),
+    new OccurrenceOrderPlugin(),
+    new DedupePlugin(),
+    new LimitChunkCountPlugin({maxChunks: 15}),
     new ExtractTextPlugin('css/style.css'),
     new CopyWebpackPlugin(),
     new HtmlWebpackPlugin({
